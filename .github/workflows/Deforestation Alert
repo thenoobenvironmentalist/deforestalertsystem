@@ -1,0 +1,15 @@
+name: Deforestation Alert
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Runs daily at midnight
+
+jobs:
+  send-alert:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run alert script
+        run: |
+          python check_deforestation.py
